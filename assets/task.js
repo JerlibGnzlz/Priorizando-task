@@ -9,7 +9,7 @@ const getPrioridad = () => {
     let prioridadValor = +selectPrioridad.value
 
 
-    if (!tareaValor || prioridadValor === 0) {
+    if (!tareaValor.trim() || prioridadValor === 0) {
         errorMessage.textContent = "Todos los Campos son requeridos"
         return
     }
