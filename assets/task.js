@@ -1,4 +1,3 @@
-
 const getPrioridad = () => {
     const tarea = document.querySelector(".task")
     const selectPrioridad = document.querySelector("#priority")
@@ -13,8 +12,8 @@ const getPrioridad = () => {
         Toastify({
             text: "Todos los Campos son requeridos",
             duration: 3000,
-            gravity: "top",
-            position: "right",
+            gravity: "bottom",
+            position: "center",
             stopOnFocus: true,
         }).showToast();
         return
