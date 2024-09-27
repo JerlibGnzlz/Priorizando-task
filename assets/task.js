@@ -26,11 +26,11 @@ const getPrioridad = () => {
     let text
     let color
 
-    if (prioridadValor < 7) {
+    if (prioridadValor < 2) {
         text = `"Baja Importancia."`
         color = "blue"
 
-    } else if (prioridadValor === 7) {
+    } else if (prioridadValor === 2) {
         text = `"Importancia Exacta".`
         color = "yellowgreen"
     } else {
