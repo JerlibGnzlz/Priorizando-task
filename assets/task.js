@@ -53,8 +53,10 @@ const getPrioridad = () => {
         const confirmacion = confirm("¿Deseas eliminar esta tarjeta?");
         if (confirmacion) {
             card.remove();
+            errorMessage.textContent = ""
         }
     });
+
 
     card.innerHTML = `
     <h3 >Prioridad de la tarjeta: ${prioridadValor ? prioridadValor : "No Existe"} </h3>
@@ -70,4 +72,5 @@ const getPrioridad = () => {
     tarea.value = ""
     selectPrioridad.value = ""
     errorMessage.innerHTML = ""
+
 }
