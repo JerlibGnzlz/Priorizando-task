@@ -42,9 +42,10 @@ button {
 .error-message {
     display: flex;
     justify-content: center;
-    color: black;
-    background-color: red;
+    color: white;
+    background-color: rgb(194, 23, 23);
     font-size: 30px;
     width: fit-content;
-    margin: 10px auto
+    margin: 10px auto;
+    font-weight: 600;
 }

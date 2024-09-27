@@ -14,6 +14,10 @@ const getPrioridad = () => {
         return
     }
 
+
+    let text
+    let color
+
     if (prioridadValor < 7) {
         text = `"Baja Importancia."`
         color = "blue"
@@ -65,12 +69,11 @@ const getPrioridad = () => {
     `
     card.appendChild(closeButton);
 
-
-
     cardContenedor.appendChild(card)
 
     tarea.value = ""
     selectPrioridad.value = ""
-    errorMessage.innerHTML = ""
+    errorMessage.textContent = ""
+
 
 }
