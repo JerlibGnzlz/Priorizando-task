@@ -45,6 +45,12 @@ const getPrioridad = () => {
     <p >Contenido:  ${tareaValor.toUpperCase() ? tareaValor : "No Existe"}</p>
     <p style="color: ${color} ">${text}</p>
     `
+
+    card.addEventListener("click", () => {
+        const confirmar = confirm("Desea eliminar esta tarjeta.?")
+        if (confirmar && card.remove());
+    })
+
     cardContenedor.appendChild(card)
 
     tarea.value = ""
