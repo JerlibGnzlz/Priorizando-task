@@ -42,7 +42,7 @@ const getPrioridad = () => {
     const card = document.createElement("div")
     card.classList.add("tarjeta")
     card.style.position = "relative";
-    card.style.width = "300px";
+    card.style.width = "315px";
     card.style.border = "1px solid black";
     card.style.borderRadius = "5px"
     card.style.boxShadow = "10px 10px 20px rgba(0, 0, 0, 0.4)";
