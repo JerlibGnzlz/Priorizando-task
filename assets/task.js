@@ -15,6 +15,9 @@ const getPrioridad = () => {
             gravity: "bottom",
             position: "center",
             stopOnFocus: true,
+            style: {
+                background: "#513C27",
+            },
         }).showToast();
         return
     }
