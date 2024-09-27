@@ -54,11 +54,23 @@ const getPrioridad = () => {
     closeButton.style.cursor = "pointer";
 
     closeButton.addEventListener('click', () => {
-        const confirmacion = confirm("¿Deseas eliminar esta tarjeta?");
-        if (confirmacion) {
-            card.remove();
-            errorMessage.textContent = ""
-        }
+        Swal.fire({
+            title: "¿Deseas eliminar esta tarjeta?",
+            text: "Esta acción no se puede deshacer",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                card.remove();
+                errorMessage.textContent = "";
+                Swal.fire('Eliminado', 'La tarjeta ha sido eliminada.', 'success');
+
+            }
+        });
     });
 
 
@@ -74,6 +86,7 @@ const getPrioridad = () => {
     tarea.value = ""
     selectPrioridad.value = ""
     errorMessage.textContent = ""
+
 
 
 }
