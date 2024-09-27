@@ -10,7 +10,13 @@ const getPrioridad = () => {
 
 
     if (!tareaValor.trim() || prioridadValor === 0) {
-        errorMessage.textContent = "Todos los Campos son requeridos"
+        Toastify({
+            text: "Todos los Campos son requeridos",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+        }).showToast();
         return
     }
 
