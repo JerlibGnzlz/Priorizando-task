@@ -29,6 +29,7 @@ const getPrioridad = () => {
 
     const card = document.createElement("div")
     card.classList.add("tarjeta")
+    card.style.position = "relative";
     card.style.width = "300px";
     card.style.border = "1px solid black";
     card.style.borderRadius = "5px"
@@ -38,18 +39,31 @@ const getPrioridad = () => {
     card.style.background = "white";
     card.style.wordBreak = "break-all";
 
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "X";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "5px";
+    closeButton.style.right = "5px";
+    closeButton.style.color = "red";
+    closeButton.style.background = "transparent";
+    closeButton.style.fontSize = "10px";
+    closeButton.style.cursor = "pointer";
 
+    closeButton.addEventListener('click', () => {
+        const confirmacion = confirm("¿Deseas eliminar esta tarjeta?");
+        if (confirmacion) {
+            card.remove();
+        }
+    });
 
     card.innerHTML = `
     <h3 >Prioridad de la tarjeta: ${prioridadValor ? prioridadValor : "No Existe"} </h3>
     <p >Contenido:  ${tareaValor.toUpperCase() ? tareaValor : "No Existe"}</p>
     <p style="color: ${color} ">${text}</p>
     `
+    card.appendChild(closeButton);
 
-    card.addEventListener("click", () => {
-        const confirmar = confirm("Desea eliminar esta tarjeta.?")
-        if (confirmar && card.remove());
-    })
+
 
     cardContenedor.appendChild(card)
 
