@@ -24,7 +24,7 @@
             <option value="3">3</option>
         </select>
 
-        <button onclick="getPrioridad()">Enviar</button>
+        <button id="addTaskButton">Agregar Tarea</button>
 
         <p class="error-message"></p>
     </div>
@@ -32,8 +32,10 @@
     <div class="cardContainer"></div>
 
 
-
-    <script src="./assets/task.js"></script>
+    <script type="module">
+        import { getPrioridad } from './assets/task.js';
+        document.getElementById("addTaskButton").addEventListener("click", getPrioridad);
+    </script>
 </body>
 
 </html>
