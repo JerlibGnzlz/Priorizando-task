@@ -1,13 +1,13 @@
 import { saveToLocalStorage, loadCards, removeFromLocalStorage } from './localStorage.js';
 
 export const getPrioridad = () => {
-    const tarea = document.querySelector(".task");
-    const selectPrioridad = document.querySelector("#priority");
+    const tarea = document.querySelector(".task").value
+    const selectPrioridad = document.querySelector("#priority").value
     const cardContenedor = document.querySelector(".cardContainer");
     const errorMessage = document.querySelector(".error-message");
 
-    let tareaValor = tarea.value;
-    let prioridadValor = +selectPrioridad.value;
+    let tareaValor = tarea
+    let prioridadValor = +selectPrioridad
 
     if (!tareaValor.trim() || prioridadValor === 0) {
         Toastify({
