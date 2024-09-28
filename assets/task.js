@@ -101,13 +101,13 @@ const getPrioridad = () => {
 
 }
 
+
 const saveToLocalStorage = (tareaValor, prioridadValor) => {
-    const cards = JSON.parse(localStorage.getItem('tarjetas')) || [];
-    cards.push({ tarea: tareaValor, prioridad: prioridadValor });
-    localStorage.setItem('tarjetas', JSON.stringify(cards));
+    localStorage.setItem('tarjetas', JSON.stringify([
+        ...JSON.parse(localStorage.getItem('tarjetas')) || [],
+        { tarea: tareaValor, prioridad: prioridadValor }
+    ]))
 }
-
-
 
 const loadCards = () => {
     const cards = JSON.parse(localStorage.getItem('tarjetas')) || [];
@@ -181,8 +181,8 @@ const loadCards = () => {
 
 const removeFromLocalStorage = (tareaValor, prioridadValor) => {
     const cards = JSON.parse(localStorage.getItem('tarjetas')) || [];
-    const updatedCards = cards.filter(card => !(card.tarea === tareaValor && card.prioridad === prioridadValor));
-    localStorage.setItem('tarjetas', JSON.stringify(updatedCards));
+    localStorage.setItem('tarjetas', JSON.stringify(cards.filter(card => card.tarea !== tareaValor || card.prioridad !== prioridadValor)));
+    console.log(cards)
 }
 
 document.addEventListener("DOMContentLoaded", loadCards);
