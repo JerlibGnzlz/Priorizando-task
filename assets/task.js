@@ -120,7 +120,7 @@ const loadCards = () => {
             text = "Baja Importancia.";
             color = "blue";
         } else if (prioridad === 2) {
-            text = "Importancia Exacta.";
+            text = "Media Importancia.";
             color = "yellowgreen";
         } else {
             text = "Alta Importancia.";
