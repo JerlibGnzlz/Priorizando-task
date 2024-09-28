@@ -1,28 +1,28 @@
-/* ------------ // Función para obtener tarjetas del localStorage ----------- */
+/* ------------ Función para obtener tarjetas del localStorage ----------- */
 export const getStoredCards = () => {
     return JSON.parse(localStorage.getItem('tarjetas')) || [];
 };
 
-/* ----------- // Función para guardar tarjetas en el localStorage ---------- */
+/* -----------  Función para guardar tarjetas en el localStorage ---------- */
 export const saveCardsToLocalStorage = (cards) => {
     localStorage.setItem('tarjetas', JSON.stringify(cards));
 };
 
-/* ------ // Función para guardar una nueva tarjeta en el localStorage ------ */
+/* ------  Función para guardar una nueva tarjeta en el localStorage ------ */
 export const saveToLocalStorage = (tareaValor, prioridadValor) => {
     const existingCards = getStoredCards();
     const newCards = [...existingCards, { tarea: tareaValor, prioridad: prioridadValor }];
     saveCardsToLocalStorage(newCards);
 };
 
-/* ---------- // Función para eliminar una tarjeta del localStorage --------- */
+/* ----------  Función para eliminar una tarjeta del localStorage --------- */
 export const removeFromLocalStorage = (tareaValor, prioridadValor) => {
     const cards = getStoredCards();
     const updatedCards = cards.filter(card => card.tarea !== tareaValor || card.prioridad !== prioridadValor);
     saveCardsToLocalStorage(updatedCards);
 };
 
-/* -------- // Función para cargar las tarjetas desde el localStorage ------- */
+/* --------  Función para cargar las tarjetas desde el localStorage ------- */
 export const loadCards = () => {
     const cards = getStoredCards();
     cards.forEach(cardData => {
