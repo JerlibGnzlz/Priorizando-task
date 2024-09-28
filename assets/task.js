@@ -12,7 +12,7 @@ export const getPrioridad = () => {
     if (!tareaValor.trim() || prioridadValor === 0) {
         Toastify({
             text: "Todos los Campos son requeridos",
-            duration: 3000,
+            duration: 1000,
             gravity: "bottom",
             position: "center",
             stopOnFocus: true,
