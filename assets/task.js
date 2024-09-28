@@ -162,7 +162,7 @@ const loadCards = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     card.remove();
-                    removeFromLocalStorage(tarea, prioridad); // Eliminar del Local Storage
+                    removeFromLocalStorage(tarea, prioridad);
                     Swal.fire('Eliminado', 'La tarjeta ha sido eliminada.', 'success');
                 }
             });
