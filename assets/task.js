@@ -86,8 +86,8 @@ export const getPrioridad = () => {
     const updateButton = document.createElement("button");
     updateButton.textContent = "Actualizar";
     updateButton.style.position = "absolute";
-    updateButton.style.top = "5px";
-    updateButton.style.right = "40px";
+    updateButton.style.top = "35px";
+    updateButton.style.right = "4px";
     updateButton.style.background = "yellow";
     updateButton.style.cursor = "pointer";
 
