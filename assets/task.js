@@ -52,7 +52,7 @@ export const getPrioridad = () => {
     card.setAttribute("data-id", id);
 
     const closeButton = document.createElement("button");
-    closeButton.textContent = "X";
+    closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
     closeButton.style.position = "absolute";
     closeButton.style.top = "5px";
     closeButton.style.right = "5px";
@@ -84,11 +84,10 @@ export const getPrioridad = () => {
     /* -------------------------------------------------------------------------- */
 
     const updateButton = document.createElement("button");
-    updateButton.textContent = "Actualizar";
+    updateButton.innerHTML = '<i class="fas fa-edit"></i>';
     updateButton.style.position = "absolute";
     updateButton.style.top = "35px";
     updateButton.style.right = "4px";
-    updateButton.style.background = "yellow";
     updateButton.style.cursor = "pointer";
 
     // Evento para actualizar la tarjeta
@@ -148,6 +147,7 @@ export const getPrioridad = () => {
         <p>Contenido: ${tareaValor.toUpperCase()}</p>
         <p style="color: ${color}">${text}</p>
     `;
+
 
 
     card.appendChild(closeButton);

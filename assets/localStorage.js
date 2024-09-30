@@ -82,7 +82,7 @@ export const loadCards = () => {
         `;
 
         const closeButton = document.createElement("button");
-        closeButton.textContent = "X";
+        closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
         closeButton.style.position = "absolute";
         closeButton.style.top = "5px";
         closeButton.style.right = "5px";
@@ -112,11 +112,10 @@ export const loadCards = () => {
 
         // Botón de actualizar
         const updateButton = document.createElement("button");
-        updateButton.textContent = "Actualizar";
+        updateButton.innerHTML = '<i class="fas fa-edit"></i>';
         updateButton.style.position = "absolute";
         updateButton.style.top = "35px";
         updateButton.style.right = "4px";
-        updateButton.style.background = "yellow";
         updateButton.style.cursor = "pointer";
 
         updateButton.addEventListener('click', () => {
