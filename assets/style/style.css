@@ -38,6 +38,11 @@ button {
     padding: 5px;
 }
 
+input {
+    padding: 5px;
+    margin: 1rem;
+}
+
 .btnAdd {
     padding: 5px;
     margin: 1rem;
