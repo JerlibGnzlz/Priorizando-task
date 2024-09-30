@@ -36,7 +36,7 @@ export const getPrioridad = () => {
         color = "red";
     }
 
-
+    const id = Date.now().toString();
 
     const card = document.createElement("div");
     card.classList.add("tarjeta");
@@ -49,6 +49,7 @@ export const getPrioridad = () => {
     card.style.padding = "10px";
     card.style.background = "white";
     card.style.wordBreak = "break-all";
+    card.setAttribute("data-id", id);
 
     const closeButton = document.createElement("button");
     closeButton.textContent = "X";
@@ -90,6 +91,7 @@ export const getPrioridad = () => {
     updateButton.style.background = "yellow";
     updateButton.style.cursor = "pointer";
 
+    // Evento para actualizar la tarjeta
     updateButton.addEventListener('click', () => {
         Swal.fire({
             title: 'Actualizar tarea',
@@ -120,8 +122,7 @@ export const getPrioridad = () => {
                 card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
 
                 // Actualizar en localStorage
-                removeFromLocalStorage(tareaValor, prioridadValor);
-                saveToLocalStorage(tareaEditada, +prioridadEditada);
+                updateLocalStorage(id, tareaEditada, +prioridadEditada);
             }
         });
     });
@@ -138,7 +139,7 @@ export const getPrioridad = () => {
     card.appendChild(updateButton);
     cardContenedor.appendChild(card);
 
-    saveToLocalStorage(tareaValor, prioridadValor);
+    saveToLocalStorage(id, tareaValor, prioridadValor);
 
     tarea.value = "";
     selectPrioridad.value = "";
