@@ -29,7 +29,7 @@ export const getPrioridad = () => {
         text = "Baja Importancia.";
         color = "blue";
     } else if (prioridadValor === 2) {
-        text = "Importancia Exacta.";
+        text = "Media Importancia.";
         color = "yellowgreen";
     } else {
         text = "Alta Importancia.";
@@ -84,7 +84,7 @@ export const getPrioridad = () => {
     /* -------------------------------------------------------------------------- */
 
     const updateButton = document.createElement("button");
-    updateButton.innerHTML = '<i class="fas fa-edit"></i>';
+    updateButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
     updateButton.style.position = "absolute";
     updateButton.style.top = "35px";
     updateButton.style.right = "4px";
@@ -123,7 +123,7 @@ export const getPrioridad = () => {
                     text = "Baja Importancia.";
                     color = "blue";
                 } else if (prioridadValor === 2) {
-                    text = "Importancia Exacta.";
+                    text = "Media Importancia.";
                     color = "yellowgreen";
                 } else {
                     text = "Alta Importancia.";

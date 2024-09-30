@@ -68,7 +68,7 @@ export const loadCards = () => {
             text = "Baja Importancia.";
             color = "blue";
         } else if (prioridad === 2) {
-            text = "Importancia Exacta.";
+            text = "Media Importancia.";
             color = "yellowgreen";
         } else {
             text = "Alta Importancia.";
@@ -112,7 +112,7 @@ export const loadCards = () => {
 
         // Botón de actualizar
         const updateButton = document.createElement("button");
-        updateButton.innerHTML = '<i class="fas fa-edit"></i>';
+        updateButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
         updateButton.style.position = "absolute";
         updateButton.style.top = "35px";
         updateButton.style.right = "4px";
@@ -150,7 +150,7 @@ export const loadCards = () => {
                         text = "Baja Importancia.";
                         color = "blue";
                     } else if (prioridadEditada == 2) {
-                        text = "Importancia Exacta.";
+                        text = "Media Importancia.";
                         color = "yellowgreen";
                     } else {
                         text = "Alta Importancia.";
