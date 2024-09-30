@@ -36,8 +36,9 @@ export const getPrioridad = () => {
         color = "red";
     }
 
+
+
     const card = document.createElement("div");
-    // Configuración del card (mismos estilos que ya tienes)
     card.classList.add("tarjeta");
     card.style.position = "relative";
     card.style.width = "315px";
@@ -59,6 +60,7 @@ export const getPrioridad = () => {
     closeButton.style.fontSize = "10px";
     closeButton.style.cursor = "pointer";
 
+
     closeButton.addEventListener('click', () => {
         Swal.fire({
             title: "¿Deseas eliminar esta tarjeta?",
@@ -78,13 +80,62 @@ export const getPrioridad = () => {
         });
     });
 
+    /* -------------------------------------------------------------------------- */
+
+    const updateButton = document.createElement("button");
+    updateButton.textContent = "Actualizar";
+    updateButton.style.position = "absolute";
+    updateButton.style.top = "5px";
+    updateButton.style.right = "40px";
+    updateButton.style.background = "yellow";
+    updateButton.style.cursor = "pointer";
+
+    updateButton.addEventListener('click', () => {
+        Swal.fire({
+            title: 'Actualizar tarea',
+            html: `
+                <input type="text" id="tareaEditada" class="swal2-input" value="${tareaValor}">
+                <select id="prioridadEditada" class="swal2-input">
+                    <option value="1" ${prioridadValor === 1 ? 'selected' : ''}>Baja</option>
+                    <option value="2" ${prioridadValor === 2 ? 'selected' : ''}>Media</option>
+                    <option value="3" ${prioridadValor === 3 ? 'selected' : ''}>Alta</option>
+                </select>
+            `,
+            confirmButtonText: 'Guardar',
+            focusConfirm: false,
+            preConfirm: () => {
+                const tareaEditada = Swal.getPopup().querySelector('#tareaEditada').value;
+                const prioridadEditada = Swal.getPopup().querySelector('#prioridadEditada').value;
+
+                if (!tareaEditada || !prioridadEditada) {
+                    Swal.showValidationMessage('Todos los campos son obligatorios');
+                    return;
+                }
+
+                // Actualizar la tarjeta y el localStorage
+                tareaValor = tareaEditada;
+                prioridadValor = +prioridadEditada;
+
+                card.querySelector('p').textContent = `Contenido: ${tareaEditada.toUpperCase()}`;
+                card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
+
+                // Actualizar en localStorage
+                removeFromLocalStorage(tareaValor, prioridadValor);
+                saveToLocalStorage(tareaEditada, +prioridadEditada);
+            }
+        });
+    });
+
+
     card.innerHTML = `
         <h3>Prioridad de la tarjeta: ${prioridadValor}</h3>
         <p>Contenido: ${tareaValor.toUpperCase()}</p>
         <p style="color: ${color}">${text}</p>
     `;
-    card.appendChild(closeButton);
 
+
+    card.appendChild(closeButton);
+    card.appendChild(updateButton);
     cardContenedor.appendChild(card);
 
     saveToLocalStorage(tareaValor, prioridadValor);
@@ -92,6 +143,9 @@ export const getPrioridad = () => {
     tarea.value = "";
     selectPrioridad.value = "";
     errorMessage.textContent = "";
+
 }
+
+
 
 document.addEventListener("DOMContentLoaded", loadCards); 
