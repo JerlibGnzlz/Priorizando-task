@@ -159,16 +159,21 @@ export const loadCards = () => {
                     }
 
                     card.innerHTML = `
-                    <h3>Prioridad de la tarjeta: ${prioridadEditada}</h3>
-                    <p>Contenido: ${tareaEditada.toUpperCase()}</p>
-                    <p style="color: ${color}">${text}</p>
-                `;
+                        <h3>Prioridad de la tarjeta: ${prioridadEditada}</h3>
+                        <p>Contenido: ${tareaEditada.toUpperCase()}</p>
+                        <p style="color: ${color}">${text}</p>
+                    `;
+
+
 
                     card.appendChild(updateButton);
+                    card.appendChild(closeButton);
 
 
                     // Actualizar en localStorage
                     updateLocalStorage(id, tareaEditada, +prioridadEditada);
+
+                    console.log('Guardando en localStorage:', id, tareaEditada, prioridadEditada);
                 }
             });
         });

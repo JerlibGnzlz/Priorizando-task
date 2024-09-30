@@ -1,4 +1,4 @@
-import { saveToLocalStorage, loadCards, removeFromLocalStorage } from './localStorage.js';
+import { saveToLocalStorage, loadCards, removeFromLocalStorage, updateLocalStorage } from './localStorage.js';
 
 export const getPrioridad = () => {
     const tarea = document.querySelector(".task")
