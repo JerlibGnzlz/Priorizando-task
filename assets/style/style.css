@@ -12,7 +12,10 @@
 }
 
 .main {
+    /* display: flex; */
+    /* justify-content: space-evenly; */
     text-align: center;
+
 }
 
 
@@ -35,9 +38,14 @@ button {
     padding: 5px;
 }
 
-.textBlue {
-    color: blue;
+.btnAdd {
+    padding: 5px;
+    margin: 1rem;
 }
+
+/* .textBlue {
+    color: blue;
+} */
 
 .error-message {
     display: flex;
