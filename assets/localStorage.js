@@ -178,7 +178,6 @@ export const loadCards = () => {
             <p style="color: ${color}">${text}</p>
         `;
 
-        // Botón de eliminar (X)
         const closeButton = document.createElement("button");
         closeButton.textContent = "X";
         closeButton.style.position = "absolute";
@@ -242,6 +241,28 @@ export const loadCards = () => {
                     // Actualizar la tarjeta y el localStorage
                     card.querySelector('p').textContent = `Contenido: ${tareaEditada.toUpperCase()}`;
                     card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
+
+
+                    let color, text;
+                    if (prioridadEditada < 2) {
+                        text = "Baja Importancia.";
+                        color = "blue";
+                    } else if (prioridadEditada == 2) {
+                        text = "Importancia Exacta.";
+                        color = "yellowgreen";
+                    } else {
+                        text = "Alta Importancia.";
+                        color = "red";
+                    }
+
+                    card.innerHTML = `
+                    <h3>Prioridad de la tarjeta: ${prioridadEditada}</h3>
+                    <p>Contenido: ${tareaEditada.toUpperCase()}</p>
+                    <p style="color: ${color}">${text}</p>
+                `;
+
+                    card.appendChild(updateButton);
+
 
                     // Actualizar en localStorage
                     updateLocalStorage(id, tareaEditada, +prioridadEditada);

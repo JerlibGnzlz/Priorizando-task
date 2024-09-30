@@ -107,7 +107,7 @@ export const getPrioridad = () => {
             focusConfirm: false,
             preConfirm: () => {
                 const tareaEditada = Swal.getPopup().querySelector('#tareaEditada').value;
-                const prioridadEditada = Swal.getPopup().querySelector('#prioridadEditada').value;
+                const prioridadEditada = +Swal.getPopup().querySelector('#prioridadEditada').value;
 
                 if (!tareaEditada || !prioridadEditada) {
                     Swal.showValidationMessage('Todos los campos son obligatorios');
@@ -118,8 +118,23 @@ export const getPrioridad = () => {
                 tareaValor = tareaEditada;
                 prioridadValor = +prioridadEditada;
 
+                let text, color;
+
+                if (prioridadValor < 2) {
+                    text = "Baja Importancia.";
+                    color = "blue";
+                } else if (prioridadValor === 2) {
+                    text = "Importancia Exacta.";
+                    color = "yellowgreen";
+                } else {
+                    text = "Alta Importancia.";
+                    color = "red";
+                }
+
                 card.querySelector('p').textContent = `Contenido: ${tareaEditada.toUpperCase()}`;
                 card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
+                card.querySelector('p[style]').textContent = text;
+                card.querySelector('p[style]').style.color = color;
 
                 // Actualizar en localStorage
                 updateLocalStorage(id, tareaEditada, +prioridadEditada);
