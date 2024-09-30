@@ -172,7 +172,6 @@ export const loadCards = () => {
                     // Actualizar en localStorage
                     updateLocalStorage(id, tareaEditada, +prioridadEditada);
 
-                    console.log('Guardando en localStorage:', id, tareaEditada, prioridadEditada);
                 }
             });
         });
