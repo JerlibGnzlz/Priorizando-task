@@ -135,7 +135,7 @@ export const loadCards = () => {
                     const tareaEditada = Swal.getPopup().querySelector('#tareaEditada').value;
                     const prioridadEditada = Swal.getPopup().querySelector('#prioridadEditada').value;
 
-                    if (!tareaEditada || !prioridadEditada) {
+                    if (!tareaEditada.trim() || !prioridadEditada === 0) {
                         Swal.showValidationMessage('Todos los campos son obligatorios');
                         return;
                     }
