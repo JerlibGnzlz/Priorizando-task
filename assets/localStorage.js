@@ -83,7 +83,7 @@ export const loadCards = () => {
 
         const closeButton = document.createElement("button");
         closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
-        closeButton.style.position = "absolute";
+        closeButton.style.position = "relative";
         closeButton.style.top = "5px";
         closeButton.style.right = "5px";
         closeButton.style.color = "red";
@@ -113,9 +113,8 @@ export const loadCards = () => {
         // Botón de actualizar
         const updateButton = document.createElement("button");
         updateButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
-        updateButton.style.position = "absolute";
-        updateButton.style.top = "35px";
-        updateButton.style.right = "4px";
+        updateButton.style.position = "relative";
+        updateButton.style.top = "4px";
         updateButton.style.cursor = "pointer";
 
         updateButton.addEventListener('click', () => {
