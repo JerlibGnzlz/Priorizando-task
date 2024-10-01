@@ -58,7 +58,7 @@ export const getPrioridad = () => {
 
     const closeButton = document.createElement("button");
     closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    closeButton.style.position = "relative";
+    closeButton.style.position = "absolute";
     closeButton.style.top = "5px";
     closeButton.style.right = "5px";
     closeButton.style.color = "red";
@@ -90,8 +90,9 @@ export const getPrioridad = () => {
 
     const updateButton = document.createElement("button");
     updateButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
-    updateButton.style.position = "relative";
-    updateButton.style.top = "4px";
+    updateButton.style.position = "absolute";
+    updateButton.style.bottom = "4px";
+    updateButton.style.right = "5px";
     updateButton.style.cursor = "pointer";
 
     // Evento para actualizar la tarjeta
