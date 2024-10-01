@@ -49,7 +49,7 @@ export const getPrioridad = () => {
     card.style.padding = "10px";
     card.style.background = "white";
     card.style.wordBreak = "break-all";
-    card.setAttribute("data-id", id);
+    card.dataset.id = id
 
     const closeButton = document.createElement("button");
     closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';

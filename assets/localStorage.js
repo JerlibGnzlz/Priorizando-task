@@ -60,7 +60,7 @@ export const loadCards = () => {
         card.style.padding = "10px";
         card.style.background = "white";
         card.style.wordBreak = "break-all";
-        card.setAttribute("data-id", id);  // Asignamos el ID al elemento
+        card.dataset.id = id  // Asignamos el ID al elemento
 
         // Asignar la prioridad y color
         let text, color;
