@@ -1,5 +1,7 @@
 import { saveToLocalStorage, loadCards, removeFromLocalStorage, updateLocalStorage } from './localStorage.js';
 
+import generateSecureId from './IdTask.js';
+
 export const getPrioridad = () => {
     const tarea = document.querySelector(".task")
     const selectPrioridad = document.querySelector("#priority")
@@ -36,7 +38,8 @@ export const getPrioridad = () => {
         color = "red";
     }
 
-    const id = Date.now().toString();
+
+    const idTask = generateSecureId()
 
     const card = document.createElement("div");
     card.classList.add("tarjeta");
@@ -49,7 +52,9 @@ export const getPrioridad = () => {
     card.style.padding = "10px";
     card.style.background = "white";
     card.style.wordBreak = "break-all";
-    card.dataset.id = id
+    card.dataset.id = idTask
+
+
 
     const closeButton = document.createElement("button");
     closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
@@ -136,7 +141,7 @@ export const getPrioridad = () => {
                 card.querySelector('p[style]').style.color = color;
 
                 // Actualizar en localStorage
-                updateLocalStorage(id, tareaEditada, +prioridadEditada);
+                updateLocalStorage(idTask, tareaEditada, +prioridadEditada);
             }
         });
     });
@@ -154,7 +159,7 @@ export const getPrioridad = () => {
     card.appendChild(updateButton);
     cardContenedor.appendChild(card);
 
-    saveToLocalStorage(id, tareaValor, prioridadValor);
+    saveToLocalStorage(idTask, tareaValor, prioridadValor);
 
     tarea.value = "";
     selectPrioridad.value = "";
