@@ -197,8 +197,8 @@ export const getPrioridad = () => {
     tarea.value = "";
     selectPrioridad.value = "";
     errorMessage.textContent = "";
-
 }
+
 
 
 

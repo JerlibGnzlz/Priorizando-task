@@ -1,11 +1,11 @@
-export const saveToLocalStorage = (id, tarea, prioridad,) => {
+export const saveToLocalStorage = (id, tarea, prioridad) => {
     let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
 
     const nuevaTarea = {
         id,         // ID único de la tarea
         tarea,      // Contenido de la tarea
         prioridad,   // Prioridad de la tarea
-        bloqueado   // Estado de bloqueo de la tarjet
+
     };
 
     tareas.push(nuevaTarea);  // Agregar la nueva tarea al array
@@ -182,31 +182,11 @@ export const loadCards = () => {
                 }
             });
         });
-        // Botón de bloqueo/desbloqueo
-        // const lockButton = document.createElement("button");
-        // lockButton.innerHTML = bloqueado ? '<i class="fa-solid fa-lock"></i>' : '<i class="fa-solid fa-lock-open"></i>';
-        // lockButton.style.position = "absolute";
-        // lockButton.style.left = "300px";
-        // lockButton.style.cursor = "pointer";
-
-
-        // lockButton.addEventListener('click', () => {
-        //     const isLocked = card.dataset.disabled === "true";
-        //     card.dataset.disabled = isLocked ? "false" : "true"; // Cambiar estado
-        //     lockButton.innerHTML = isLocked ? '<i class="fa-solid fa-lock-open"></i>' : '<i class="fa-solid fa-lock"></i>';
-
-        //     // Cambiar la opacidad y deshabilitar o habilitar interacciones
-        //     toggleLockStyles(!isLocked);
-
-        //     // Actualizar en localStorage el estado bloqueado
-        //     updateLocalStorage(id, tarea, prioridad, !isLocked);
-        // });
 
 
 
         card.appendChild(closeButton);
         card.appendChild(updateButton);
-        // card.appendChild(lockButton);
         cardContenedor.appendChild(card);
     });
 };
