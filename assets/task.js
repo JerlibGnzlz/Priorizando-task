@@ -40,8 +40,12 @@ export const getPrioridad = () => {
 
 
     const idTask = generateSecureId()
+    console.log(idTask)
 
     const card = document.createElement("div");
+    card.dataset.disabled = "false";
+
+
     card.classList.add("tarjeta");
     card.style.position = "relative";
     card.style.width = "315px";
@@ -57,6 +61,8 @@ export const getPrioridad = () => {
 
 
     const closeButton = document.createElement("button");
+    if (card.dataset.disabled === "true") return; // Si está bloqueada, no permitir eliminarla
+
     closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
     closeButton.style.position = "absolute";
     closeButton.style.top = "5px";
@@ -68,6 +74,7 @@ export const getPrioridad = () => {
 
 
     closeButton.addEventListener('click', () => {
+        if (card.dataset.disabled === "true") return;
         Swal.fire({
             title: "¿Deseas eliminar esta tarjeta?",
             text: "Esta acción no se puede deshacer",
@@ -86,6 +93,23 @@ export const getPrioridad = () => {
         });
     });
 
+    // Botón de bloqueo/desbloqueo
+    const toggleLockButton = document.createElement("button");
+    toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
+    toggleLockButton.style.position = "relative";
+    toggleLockButton.style.bottom = "4px";
+    toggleLockButton.style.left = "5px";
+    toggleLockButton.style.cursor = "pointer";
+
+    toggleLockButton.addEventListener('click', () => {
+        const isDisabled = card.dataset.disabled === "true";
+        card.dataset.disabled = isDisabled ? "false" : "true";
+        toggleLockButton.innerHTML = isDisabled
+            ? '<i class="fa-solid fa-lock-open"></i>'
+            : '<i class="fa-solid fa-lock"></i>';
+    });
+
+
     /* -------------------------------------------------------------------------- */
 
     const updateButton = document.createElement("button");
@@ -97,6 +121,8 @@ export const getPrioridad = () => {
 
     // Evento para actualizar la tarjeta
     updateButton.addEventListener('click', () => {
+        if (card.dataset.disabled === "true") return; // Si está bloqueada, no permitir editar
+
         Swal.fire({
             title: 'Actualizar tarea',
             html: `
@@ -157,6 +183,7 @@ export const getPrioridad = () => {
 
     card.appendChild(closeButton);
     card.appendChild(updateButton);
+    card.appendChild(toggleLockButton);
     cardContenedor.appendChild(card);
 
     saveToLocalStorage(idTask, tareaValor, prioridadValor);
