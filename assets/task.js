@@ -40,13 +40,11 @@ export const getPrioridad = () => {
 
 
     const idTask = generateSecureId()
-    console.log(idTask)
-
     const card = document.createElement("div");
+    card.classList.add("tarjeta");
     card.dataset.disabled = "false";
 
 
-    card.classList.add("tarjeta");
     card.style.position = "relative";
     card.style.width = "315px";
     card.style.border = "1px solid black";
@@ -96,17 +94,25 @@ export const getPrioridad = () => {
     // Botón de bloqueo/desbloqueo
     const toggleLockButton = document.createElement("button");
     toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
-    toggleLockButton.style.position = "relative";
-    toggleLockButton.style.bottom = "4px";
-    toggleLockButton.style.left = "5px";
+    toggleLockButton.style.position = "absolute";
+    toggleLockButton.style.left = "300px";
     toggleLockButton.style.cursor = "pointer";
+
 
     toggleLockButton.addEventListener('click', () => {
         const isDisabled = card.dataset.disabled === "true";
         card.dataset.disabled = isDisabled ? "false" : "true";
-        toggleLockButton.innerHTML = isDisabled
-            ? '<i class="fa-solid fa-lock-open"></i>'
-            : '<i class="fa-solid fa-lock"></i>';
+
+        // Cambiar icono y aplicar estilos de bloqueo
+        if (isDisabled) {
+            toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
+            card.style.opacity = "1";  // Restaurar opacidad
+            card.style.cursor = "default";  // Restaurar cursor
+        } else {
+            toggleLockButton.innerHTML = '<i class="fa-solid fa-lock"></i>';
+            card.style.opacity = "0.5";  // Aplicar opacidad
+            card.style.cursor = "not-allowed";  // Cambiar cursor a no permitido
+        }
     });
 
 
