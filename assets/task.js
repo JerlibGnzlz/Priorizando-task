@@ -45,6 +45,7 @@ export const getPrioridad = () => {
     card.dataset.disabled = "false";
 
 
+
     card.style.position = "relative";
     card.style.width = "315px";
     card.style.border = "1px solid black";
@@ -55,7 +56,6 @@ export const getPrioridad = () => {
     card.style.background = "white";
     card.style.wordBreak = "break-all";
     card.dataset.id = idTask
-
 
 
     const closeButton = document.createElement("button");

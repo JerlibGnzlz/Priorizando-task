@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 /* .titulo {
@@ -13,6 +13,7 @@
 
 
 .main {
+    width: 100%;
     text-align: center;
     position: fixed;
     /* Fija la posición del contenedor */
@@ -37,8 +38,17 @@ body {
 }
 
 .cardContainer {
-    text-align: justify;
+    align-self: center;
 
+}
+
+
+#container {
+    text-align: center;
+}
+
+.tarjeta {
+    display: inline-block;
 }
 
 button {
