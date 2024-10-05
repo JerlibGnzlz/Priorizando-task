@@ -36,16 +36,12 @@ body {
 
 .cardContainer {
     display: flex;
-    /* Usar flexbox para el contenedor */
     flex-direction: column;
-    /* Organizar las tarjetas en columnas */
     align-items: center;
-    /* Ajusta este valor según lo necesites */
     overflow-y: auto;
-    /* Permite el desplazamiento vertical */
     padding: 30px;
-    /* Espaciado interior */
-    background-color: #f9f9f9;
+    margin-top: 100px;
+    max-height: calc(100vh - 150px);
 }
 
 
