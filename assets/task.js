@@ -1,4 +1,4 @@
-import { saveToLocalStorage, loadCards, removeFromLocalStorage, updateLocalStorage } from './localStorage.js';
+import { saveToLocalStorage, removeFromLocalStorage, updateLocalStorage } from './localStorage.js';
 
 import generateSecureId from './IdTask.js';
 
@@ -200,6 +200,3 @@ export const getPrioridad = () => {
 }
 
 
-
-
-document.addEventListener("DOMContentLoaded", loadCards); 

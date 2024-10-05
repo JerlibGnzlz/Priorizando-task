@@ -190,3 +190,5 @@ export const loadCards = () => {
         cardContenedor.appendChild(card);
     });
 };
+
+loadCards()
