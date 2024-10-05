@@ -172,10 +172,15 @@ export const getPrioridad = () => {
                     color = "red";
                 }
 
-                card.querySelector('p').textContent = `Contenido: ${tareaEditada}`;
-                card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
-                card.querySelector('p[style]').textContent = text;
-                card.querySelector('p[style]').style.color = color;
+
+                card.innerHTML = `
+                    <h3>Prioridad de la tarjeta: ${prioridadEditada}</h3>
+                    <p>Contenido: ${tareaEditada}</p>
+                    <p style="color: ${color}">${text}</p>
+                `;
+                card.appendChild(updateButton);
+                card.appendChild(closeButton);
+
 
                 // Actualizar en localStorage
                 updateLocalStorage(idTask, tareaEditada, +prioridadEditada);
