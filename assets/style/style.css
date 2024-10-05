@@ -17,16 +17,13 @@
     text-align: center;
     position: fixed;
     top: 0;
-    background: white;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #FBB963;
     z-index: 100;
 }
 
 
-
 body {
-    background-image: url("../img/todo.jpg");
+    background-color: #FBB963;
     background-attachment: fixed;
     background-size: contain;
     background-position: center;
