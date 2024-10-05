@@ -95,7 +95,7 @@ export const loadCards = () => {
         closeButton.style.right = "5px";
         closeButton.style.color = "red";
         closeButton.style.background = "transparent";
-        closeButton.style.fontSize = "10px";
+        closeButton.style.fontSize = "15px";
         closeButton.style.cursor = "pointer";
 
         closeButton.addEventListener('click', () => {
