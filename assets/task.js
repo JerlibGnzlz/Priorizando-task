@@ -169,7 +169,7 @@ export const getPrioridad = () => {
                     color = "red";
                 }
 
-                card.querySelector('p').textContent = `Contenido: ${tareaEditada.toUpperCase()}`;
+                card.querySelector('p').textContent = `Contenido: ${tareaEditada}`;
                 card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
                 card.querySelector('p[style]').textContent = text;
                 card.querySelector('p[style]').style.color = color;
