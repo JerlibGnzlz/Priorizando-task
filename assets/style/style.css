@@ -29,9 +29,9 @@
 
 
 body {
-    /* background-color: #c14b0c; */
-    background-image: url('../img/todo.jpg');
-    padding-top: 160px;
+    background-color: #c14b0c;
+    /* background-image: url('../img/todo.jpg'); */
+    padding-top: 200px;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
