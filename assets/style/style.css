@@ -20,7 +20,7 @@
     text-align: center;
     position: fixed;
     top: 0;
-    background-color: #FBB963;
+    background-color: #5100C9;
     background-size: cover;
     z-index: 100;
     padding: 20px 0;
@@ -29,7 +29,7 @@
 
 
 body {
-    background-color: #c14b0c;
+    background-color: #232323;
     /* background-image: url('../img/todo.jpg'); */
     padding-top: 200px;
     background-attachment: fixed;
