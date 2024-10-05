@@ -1,15 +1,15 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
 }
 
-/* .titulo {
-    text-align: center;
+.titulo {
     font-size: 35px;
     font-weight: 600;
     margin: 5px;
-} */
+    margin-bottom: 20px;
+}
 
 
 .main {
