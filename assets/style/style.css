@@ -4,17 +4,27 @@
     box-sizing: border-box;
 }
 
-.titulo {
+/* .titulo {
     text-align: center;
     font-size: 35px;
     font-weight: 600;
     margin: 5px;
-}
+} */
+
 
 .main {
     text-align: center;
-
+    position: fixed;
+    /* Fija la posición del contenedor */
+    top: 0;
+    /* Se queda en la parte superior de la ventana */
+    background: white;
+    /* Fondo blanco para el contenedor */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
 }
+
 
 
 body {
@@ -27,9 +37,8 @@ body {
 }
 
 .cardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start
+    text-align: justify;
+
 }
 
 button {
