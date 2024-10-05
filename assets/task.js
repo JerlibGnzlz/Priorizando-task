@@ -19,7 +19,8 @@ export const getPrioridad = () => {
             position: "center",
             stopOnFocus: true,
             style: {
-                background: "#513C27",
+                background: "#A4ED30",
+                color: "black"
             },
         }).showToast();
         return;
