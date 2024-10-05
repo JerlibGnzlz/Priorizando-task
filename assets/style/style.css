@@ -14,8 +14,8 @@
 .main {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
+    align-items: center;
+    justify-content: center;
     min-width: 100vw;
     text-align: center;
     position: fixed;
@@ -31,7 +31,7 @@
 body {
     /* background-color: #c14b0c; */
     background-image: url('../img/todo.jpg');
-    padding-top: 100px;
+    padding-top: 160px;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -44,7 +44,8 @@ body {
 .main select,
 .main button {
     margin: 5px;
-
+    padding: 4px;
+    width: 300px;
 }
 
 .cardContainer {
