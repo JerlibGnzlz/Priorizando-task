@@ -35,15 +35,16 @@ body {
 }
 
 .cardContainer {
-    /* display: flex; */
+    display: flex;
     /* Usar flexbox para el contenedor */
-    /* flex-direction: column; */
+    flex-direction: column;
     /* Organizar las tarjetas en columnas */
     align-items: center;
     /* Ajusta este valor según lo necesites */
     padding: 30px;
+    margin: 10px;
     /* Espaciado interior */
-    /* background-color: #f9f9f9; */
+    background-color: #f9f9f9;
 }
 
 
