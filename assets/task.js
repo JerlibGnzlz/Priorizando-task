@@ -67,7 +67,7 @@ export const getPrioridad = () => {
     closeButton.style.right = "5px";
     closeButton.style.color = "red";
     closeButton.style.background = "transparent";
-    closeButton.style.fontSize = "10px";
+    closeButton.style.fontSize = "20px";
     closeButton.style.cursor = "pointer";
 
 
@@ -95,8 +95,9 @@ export const getPrioridad = () => {
     const toggleLockButton = document.createElement("button");
     toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
     toggleLockButton.style.position = "absolute";
-    toggleLockButton.style.left = "300px";
+    toggleLockButton.style.left = "5px";
     toggleLockButton.style.cursor = "pointer";
+    closeButton.style.fontSize = "20px";
 
 
     toggleLockButton.addEventListener('click', () => {
@@ -124,6 +125,7 @@ export const getPrioridad = () => {
     updateButton.style.bottom = "4px";
     updateButton.style.right = "5px";
     updateButton.style.cursor = "pointer";
+    closeButton.style.fontSize = "20px";
 
     // Evento para actualizar la tarjeta
     updateButton.addEventListener('click', () => {
