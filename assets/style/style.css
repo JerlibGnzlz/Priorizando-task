@@ -41,14 +41,17 @@ body {
     /* Organizar las tarjetas en columnas */
     align-items: center;
     /* Ajusta este valor según lo necesites */
+    overflow-y: auto;
+    /* Permite el desplazamiento vertical */
     padding: 30px;
-    margin: 10px;
     /* Espaciado interior */
     background-color: #f9f9f9;
 }
 
 
-
+#container {
+    text-align: center;
+}
 
 .tarjeta {
     display: inline-block;
