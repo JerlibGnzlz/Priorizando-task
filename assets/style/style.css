@@ -16,11 +16,8 @@
     width: 100%;
     text-align: center;
     position: fixed;
-    /* Fija la posición del contenedor */
     top: 0;
-    /* Se queda en la parte superior de la ventana */
     background: white;
-    /* Fondo blanco para el contenedor */
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 100;
@@ -38,14 +35,19 @@ body {
 }
 
 .cardContainer {
-    align-self: center;
-
+    /* display: flex; */
+    /* Usar flexbox para el contenedor */
+    /* flex-direction: column; */
+    /* Organizar las tarjetas en columnas */
+    align-items: center;
+    /* Ajusta este valor según lo necesites */
+    padding: 30px;
+    /* Espaciado interior */
+    /* background-color: #f9f9f9; */
 }
 
 
-#container {
-    text-align: center;
-}
+
 
 .tarjeta {
     display: inline-block;
