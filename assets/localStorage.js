@@ -84,7 +84,7 @@ export const loadCards = () => {
 
         card.innerHTML = `
             <h3>Prioridad de la tarjeta: ${prioridad}</h3>
-            <p>Contenido: ${tarea.toUpperCase()}</p>
+            <p>Contenido: ${tarea}</p>
             <p style="color: ${color}">${text}</p>
         `;
 
@@ -148,7 +148,7 @@ export const loadCards = () => {
                     }
 
                     // Actualizar la tarjeta y el localStorage
-                    card.querySelector('p').textContent = `Contenido: ${tareaEditada.toUpperCase()}`;
+                    card.querySelector('p').textContent = `Contenido: ${tareaEditada}`;
                     card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
 
 
@@ -166,7 +166,7 @@ export const loadCards = () => {
 
                     card.innerHTML = `
                         <h3>Prioridad de la tarjeta: ${prioridadEditada}</h3>
-                        <p>Contenido: ${tareaEditada.toUpperCase()}</p>
+                        <p>Contenido: ${tareaEditada}</p>
                         <p style="color: ${color}">${text}</p>
                     `;
 

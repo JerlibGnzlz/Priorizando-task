@@ -183,7 +183,7 @@ export const getPrioridad = () => {
 
     card.innerHTML = `
         <h3>Prioridad de la tarjeta: ${prioridadValor}</h3>
-        <p>Contenido: ${tareaValor.toUpperCase()}</p>
+        <p>Contenido: ${tareaValor}</p>
         <p style="color: ${color}">${text}</p>
     `;
 
