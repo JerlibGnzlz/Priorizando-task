@@ -6,8 +6,10 @@
 
 .titulo {
     font-size: 50px;
-    font-weight: 600px;
+    font-weight: bold;
     margin-top: 10px;
+    color: #A4ED30;
+    font-family: Courier New;
 }
 
 
