@@ -55,7 +55,9 @@ export const getPrioridad = () => {
     card.style.margin = "10px";
     card.style.padding = "10px";
     card.style.background = "white";
-    card.style.wordBreak = "break-all";
+    card.style.wordBreak = "break-word"; // Cambiado a "break-word"
+    card.style.overflowWrap = "break-word"; // Añadir esta propiedad
+    card.style.textAlign = "justify";
     card.dataset.id = idTask
 
 

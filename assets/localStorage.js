@@ -162,7 +162,8 @@ export const loadCards = () => {
             Swal.fire({
                 title: 'Actualizar tarea',
                 html: `
-                    <input type="text" id="tareaEditada" class="swal2-input" value="${tarea}">
+                    <input type="text" id="tareaEditada" class="swal2-input" maxlength="100" value="${tarea} ">
+                    <span id="charCount">100 caracteres restantes</span>
                     <select id="prioridadEditada" class="swal2-input">
                         <option value="1" ${prioridad === 1 ? 'selected' : ''}>Baja</option>
                         <option value="2" ${prioridad === 2 ? 'selected' : ''}>Media</option>
@@ -203,7 +204,21 @@ export const loadCards = () => {
 
                 }
             });
+
+            const inputField = Swal.getPopup().querySelector('#tareaEditada');
+            const charCount = Swal.getPopup().querySelector('#charCount');
+            const updateCharCount = () => {
+                const remainingChars = 100 - inputField.value.length;
+                charCount.textContent = `${remainingChars} caracteres restantes`;
+            };
+            // Inicializar el contador al cargar
+            updateCharCount();
+
+            // Añadir el evento de entrada al campo de texto
+            inputField.addEventListener('input', updateCharCount);
         });
+
+
 
         let text, color;
         if (prioridad < 2) {
