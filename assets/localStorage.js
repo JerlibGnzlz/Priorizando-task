@@ -1,10 +1,11 @@
-export const saveToLocalStorage = (id, tarea, prioridad) => {
+export const saveToLocalStorage = (id, tarea, prioridad, bloqueado) => {
     let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
 
     const nuevaTarea = {
         id,         // ID único de la tarea
         tarea,      // Contenido de la tarea
         prioridad,   // Prioridad de la tarea
+        bloqueado: bloqueado === "true"
 
     };
 
@@ -24,7 +25,7 @@ export const removeFromLocalStorage = (id) => {
 };
 
 
-export const updateLocalStorage = (id, tareaActualizada, prioridadActualizada) => {
+export const updateLocalStorage = (id, tareaActualizada, prioridadActualizada, bloqueado) => {
     let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
 
     // Mapear las tareas y actualizar la que tenga el mismo ID
@@ -34,6 +35,7 @@ export const updateLocalStorage = (id, tareaActualizada, prioridadActualizada) =
                 ...tarea,
                 tarea: tareaActualizada,
                 prioridad: prioridadActualizada,
+                bloqueado: bloqueado === "true"
 
             };
         }
@@ -45,13 +47,19 @@ export const updateLocalStorage = (id, tareaActualizada, prioridadActualizada) =
 };
 
 
+
 export const loadCards = () => {
     const tareas = JSON.parse(localStorage.getItem('tareas')) || [];
     const cardContenedor = document.querySelector(".cardContainer");
 
-    tareas.forEach(({ id, tarea, prioridad }) => {
-        // Crear la tarjeta con los mismos estilos y lógica
+    // Limpiar el contenedor de tarjetas antes de volver a cargar
+    cardContenedor.innerHTML = '';
+
+    tareas.forEach(({ id, tarea, prioridad, bloqueado }) => {
+        const isBlocked = bloqueado; // Ya es un booleano
+
         const card = document.createElement("div");
+        card.dataset.disabled = bloqueado ? "true" : "false";
         card.classList.add("tarjeta");
         card.style.position = "relative";
         card.style.width = "315px";
@@ -62,32 +70,20 @@ export const loadCards = () => {
         card.style.padding = "10px";
         card.style.background = "white";
         card.style.wordBreak = "break-all";
-        card.dataset.idCard = id  // Asignamos el ID al elemento
+        card.dataset.idCard = id;
 
-
-
-
-
-
-        // Asignar la prioridad y color
-        let text, color;
-        if (prioridad < 2) {
-            text = "Baja Importancia.";
-            color = "blue";
-        } else if (prioridad === 2) {
-            text = "Media Importancia.";
-            color = "yellowgreen";
+        // Estado inicial de bloqueo
+        if (isBlocked) {
+            card.style.opacity = "0.5";
+            card.style.cursor = "not-allowed";
         } else {
-            text = "Alta Importancia.";
-            color = "red";
+            card.style.opacity = "1";
+            card.style.cursor = "default";
         }
 
-        card.innerHTML = `
-            <h3>Prioridad de la tarjeta: ${prioridad}</h3>
-            <p>Contenido: ${tarea}</p>
-            <p style="color: ${color}">${text}</p>
-        `;
 
+
+        // Botón para eliminar tarjeta
         const closeButton = document.createElement("button");
         closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
         closeButton.style.position = "absolute";
@@ -111,19 +107,56 @@ export const loadCards = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     card.remove();
-                    removeFromLocalStorage(id);  // Eliminar por ID en localStorage
+                    removeFromLocalStorage(id);
                     Swal.fire('Eliminado', 'La tarjeta ha sido eliminada.', 'success');
                 }
             });
         });
 
-        // Botón de actualizar
+        // Botón para bloquear/desbloquear tarjeta
+        // const toggleLockButton = document.createElement("button");
+        // toggleLockButton.innerHTML = bloqueado ? '<i class="fa-solid fa-lock"></i>' : '<i class="fa-solid fa-lock-open"></i>';
+        // toggleLockButton.style.position = "absolute";
+        // toggleLockButton.style.left = "20rem";
+        // toggleLockButton.style.top = "1.5rem";
+        // toggleLockButton.style.margin = "0.5rem";
+        // toggleLockButton.style.cursor = "pointer";
+        // toggleLockButton.style.fontSize = "15px";
+
+        // toggleLockButton.addEventListener('click', () => {
+        //     const isDisabled = card.dataset.disabled === "true";
+        //     card.dataset.disabled = isDisabled ? "false" : "true";
+
+        //     if (isDisabled) {
+        //         toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
+        //         card.style.opacity = "1";
+        //         card.style.cursor = "default";
+        //         closeButton.style.display = "block";
+        //         updateButton.style.display = "block";
+        //     } else {
+        //         toggleLockButton.innerHTML = '<i class="fa-solid fa-lock"></i>';
+        //         card.style.opacity = "0.5";
+        //         card.style.cursor = "not-allowed";
+        //         closeButton.style.display = "none";
+        //         updateButton.style.display = "none";
+        //     }
+
+        //     // Actualizar el estado de bloqueo en localStorage
+        //     updateLocalStorage(id, tarea, prioridad, !isDisabled);
+
+        //     // Aquí, actualiza solo el contenido que necesites si es necesario
+        //     // Puedes agregar más lógica aquí si deseas cambiar el texto u otros elementos
+        // });
+
+
+        // Botón para actualizar tarjeta
         const updateButton = document.createElement("button");
         updateButton.innerHTML = '<i class="fa-solid fa-pencil"></i>';
         updateButton.style.position = "absolute";
         updateButton.style.bottom = "4px";
         updateButton.style.right = "5px";
         updateButton.style.cursor = "pointer";
+        updateButton.style.fontSize = "15px";
 
         updateButton.addEventListener('click', () => {
             Swal.fire({
@@ -142,17 +175,15 @@ export const loadCards = () => {
                     const tareaEditada = Swal.getPopup().querySelector('#tareaEditada').value;
                     const prioridadEditada = Swal.getPopup().querySelector('#prioridadEditada').value;
 
-                    if (!tareaEditada.trim() || !prioridadEditada === 0) {
+                    if (!tareaEditada.trim() || !prioridadEditada) {
                         Swal.showValidationMessage('Todos los campos son obligatorios');
                         return;
                     }
 
-                    // Actualizar la tarjeta y el localStorage
-                    card.querySelector('p').textContent = `Contenido: ${tareaEditada}`;
                     card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
+                    card.querySelector('p').textContent = `Contenido: ${tareaEditada}`;
 
-
-                    let color, text;
+                    let text, color;
                     if (prioridadEditada < 2) {
                         text = "Baja Importancia.";
                         color = "blue";
@@ -164,31 +195,44 @@ export const loadCards = () => {
                         color = "red";
                     }
 
-                    card.innerHTML = `
-                        <h3>Prioridad de la tarjeta: ${prioridadEditada}</h3>
-                        <p>Contenido: ${tareaEditada}</p>
-                        <p style="color: ${color}">${text}</p>
-                    `;
-
-
-
-                    card.appendChild(updateButton);
-                    card.appendChild(closeButton);
-
+                    card.querySelectorAll('p')[1].textContent = text;
+                    card.querySelectorAll('p')[1].style.color = color;
 
                     // Actualizar en localStorage
-                    updateLocalStorage(id, tareaEditada, +prioridadEditada);
+                    updateLocalStorage(id, tareaEditada, Number(prioridadEditada), card.dataset.disabled === "true");
 
                 }
             });
         });
 
+        let text, color;
+        if (prioridad < 2) {
+            text = "Baja Importancia.";
+            color = "blue";
+        } else if (prioridad === 2) {
+            text = "Media Importancia.";
+            color = "yellowgreen";
+        } else {
+            text = "Alta Importancia.";
+            color = "red";
+        }
 
 
+        card.innerHTML = `
+            <h3>Prioridad de la tarjeta: ${prioridad}</h3>
+            <p>Contenido: ${tarea}</p>
+            <p style="color: ${color}">${text}</p>
+        `;
+
+        // Añadir los botones a la tarjeta
         card.appendChild(closeButton);
+        // card.appendChild(toggleLockButton);
         card.appendChild(updateButton);
+
+        // Añadir la tarjeta al contenedor
         cardContenedor.appendChild(card);
     });
 };
 
-loadCards()
+// Llamar a loadCards al cargar la página
+loadCards();

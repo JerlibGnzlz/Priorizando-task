@@ -108,6 +108,12 @@ button {
     pointer-events: none;
 }
 
+.contenido-tarjeta {
+    margin-bottom: 10px;
+    /* Separar contenido de los botones */
+}
+
+
 
 @media (max-width: 600px) {
     .titulo {

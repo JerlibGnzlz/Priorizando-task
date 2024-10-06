@@ -60,7 +60,7 @@ export const getPrioridad = () => {
 
 
     const closeButton = document.createElement("button");
-    if (card.dataset.disabled === "true") return; // Si está bloqueada, no permitir eliminarla
+    // if (card.dataset.disabled === "true") return; // Si está bloqueada, no permitir eliminarla
 
     closeButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
     closeButton.style.position = "absolute";
@@ -86,38 +86,40 @@ export const getPrioridad = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 card.remove();
-                removeFromLocalStorage(tareaValor, prioridadValor);
+                // removeFromLocalStorage(tareaValor, prioridadValor);
+                removeFromLocalStorage(idTask);
                 Swal.fire('Eliminado', 'La tarjeta ha sido eliminada.', 'success');
             }
         });
     });
 
     // Botón de bloqueo/desbloqueo
-    const toggleLockButton = document.createElement("button");
-    toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
-    toggleLockButton.style.position = "absolute";
-    toggleLockButton.style.left = "20rem";
-    toggleLockButton.style.top = "1.5rem";
-    toggleLockButton.style.margin = "0.5rem";
-    toggleLockButton.style.cursor = "pointer";
-    closeButton.style.fontSize = "15px";
+    // const toggleLockButton = document.createElement("button");
+    // toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
+    // toggleLockButton.style.position = "absolute";
+    // toggleLockButton.style.left = "20rem";
+    // toggleLockButton.style.top = "1.5rem";
+    // toggleLockButton.style.margin = "0.5rem";
+    // toggleLockButton.style.cursor = "pointer";
+    // closeButton.style.fontSize = "15px";
 
 
-    toggleLockButton.addEventListener('click', () => {
-        const isDisabled = card.dataset.disabled === "true";
-        card.dataset.disabled = isDisabled ? "false" : "true";
+    // toggleLockButton.addEventListener('click', () => {
+    //     const isDisabled = card.dataset.disabled === "true";
+    //     card.dataset.disabled = isDisabled ? "false" : "true";
 
-        // Cambiar icono y aplicar estilos de bloqueo
-        if (isDisabled) {
-            toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
-            card.style.opacity = "1";  // Restaurar opacidad
-            card.style.cursor = "default";  // Restaurar cursor
-        } else {
-            toggleLockButton.innerHTML = '<i class="fa-solid fa-lock"></i>';
-            card.style.opacity = "0.5";  // Aplicar opacidad
-            card.style.cursor = "not-allowed";  // Cambiar cursor a no permitido
-        }
-    });
+    //     // Cambiar icono y aplicar estilos de bloqueo
+    //     if (isDisabled) {
+    //         toggleLockButton.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
+    //         card.style.opacity = "1";  // Restaurar opacidad
+    //         card.style.cursor = "default";  // Restaurar cursor
+    //     } else {
+    //         toggleLockButton.innerHTML = '<i class="fa-solid fa-lock"></i>';
+    //         card.style.opacity = "0.5";  // Aplicar opacidad
+    //         card.style.cursor = "not-allowed";  // Cambiar cursor a no permitido
+    //     }
+    //     updateLocalStorage(idTask, tareaValor, prioridadValor, card.dataset.disabled);
+    // });
 
 
     /* -------------------------------------------------------------------------- */
@@ -157,7 +159,7 @@ export const getPrioridad = () => {
 
                 // Actualizar la tarjeta y el localStorage
                 tareaValor = tareaEditada;
-                prioridadValor = +prioridadEditada;
+                prioridadValor = prioridadEditada;
 
                 let text, color;
 
@@ -183,7 +185,8 @@ export const getPrioridad = () => {
 
 
                 // Actualizar en localStorage
-                updateLocalStorage(idTask, tareaEditada, +prioridadEditada);
+                // updateLocalStorage(idTask, tareaEditada, +prioridadEditada);
+                updateLocalStorage(idTask, tareaEditada, prioridadEditada, card.dataset.disabled);
             }
         });
     });
@@ -199,10 +202,11 @@ export const getPrioridad = () => {
 
     card.appendChild(closeButton);
     card.appendChild(updateButton);
-    card.appendChild(toggleLockButton);
+    // card.appendChild(toggleLockButton);
     cardContenedor.appendChild(card);
 
-    saveToLocalStorage(idTask, tareaValor, prioridadValor);
+    // saveToLocalStorage(idTask, tareaValor, prioridadValor);
+    saveToLocalStorage(idTask, tareaValor, prioridadValor, card.dataset.disabled);
 
     tarea.value = "";
     selectPrioridad.value = "";
