@@ -207,6 +207,7 @@ export const loadCards = () => {
 
             const inputField = Swal.getPopup().querySelector('#tareaEditada');
             const charCount = Swal.getPopup().querySelector('#charCount');
+
             const updateCharCount = () => {
                 const remainingChars = 100 - inputField.value.length;
                 charCount.textContent = `${remainingChars} caracteres restantes`;
@@ -216,6 +217,7 @@ export const loadCards = () => {
 
             // Añadir el evento de entrada al campo de texto
             inputField.addEventListener('input', updateCharCount);
+            inputField.addEventListener('focus', updateCharCount)
         });
 
 
