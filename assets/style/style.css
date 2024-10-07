@@ -114,13 +114,25 @@ button {
 }
 
 .custom-swal {
-    width: 500px;
-    /* Ajusta el ancho según sea necesario */
-    max-width: 100%;
-    /* Asegura que no exceda el 90% del ancho de la pantalla */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    /* Opcional: Sombra para darle profundidad */
+    max-width: 80%;
+    /* Ajusta el ancho máximo del popup */
+    margin: auto;
+    /* Centra el popup */
 }
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.swal2-input {
+    width: 100%;
+    /* Hace que los inputs ocupen el 100% del contenedor */
+    box-sizing: border-box;
+    /* Incluye el padding y el borde en el ancho total */
+}
+
 
 
 @media (max-width: 600px) {

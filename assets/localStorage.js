@@ -163,7 +163,7 @@ export const loadCards = () => {
             Swal.fire({
                 title: 'Actualizar tarea',
                 html: `
-                    <input type="text" id="tareaEditada" class="swal2-input" maxlength="100" value="${tarea} ">
+                    <input type="text" id="tareaEditada" class="swal2-input" maxlength="100"  value="${tarea.trim()} ">
                     <span id="charCount">100 caracteres restantes</span>
                     <select id="prioridadEditada" class="swal2-input">
                         <option value="1" ${prioridad === 1 ? 'selected' : ''}>Baja</option>
@@ -188,17 +188,17 @@ export const loadCards = () => {
                     card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
                     card.querySelector('p').textContent = `Contenido: ${tareaEditada}`;
 
-                    // let text, color;
-                    // if (prioridad === 1) {
-                    //     text = "Baja Importancia.";
-                    //     color = "blue";
-                    // } else if (prioridad === 2) {
-                    //     text = "Media Importancia.";
-                    //     color = "yellowgreen";
-                    // } else if (prioridad === 3) {
-                    //     text = "Alta Importancia.";
-                    //     color = "red";
-                    // }
+                    let text, color;
+                    if (prioridadEditada == 1) {
+                        text = "Baja Importancia.";
+                        color = "blue";
+                    } else if (prioridadEditada == 2) {
+                        text = "Media Importancia.";
+                        color = "yellowgreen";
+                    } else if (prioridadEditada == 3) {
+                        text = "Alta Importancia.";
+                        color = "red";
+                    }
 
                     card.querySelectorAll('p')[1].textContent = text;
                     card.querySelectorAll('p')[1].style.color = color;
@@ -206,6 +206,15 @@ export const loadCards = () => {
                     // Actualizar en localStorage
                     updateLocalStorage(id, tareaEditada, Number(prioridadEditada), card.dataset.disabled === "true");
 
+                    willOpen: () => {
+                        // Actualizar el contador de caracteres al escribir
+                        const input = Swal.getPopup().querySelector('#tareaEditada');
+                        const charCount = Swal.getPopup().querySelector('#charCount');
+                        input.addEventListener('input', () => {
+                            const remaining = 100 - input.value.length;
+                            charCount.textContent = `${remaining} caracteres restantes`;
+                        });
+                    }
                 }
             });
 
