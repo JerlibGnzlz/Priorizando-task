@@ -24,7 +24,6 @@ export const removeFromLocalStorage = (id) => {
     localStorage.setItem('tareas', JSON.stringify(tareas));
 };
 
-
 export const updateLocalStorage = (id, tareaActualizada, prioridadActualizada, bloqueado) => {
     let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
 
@@ -36,7 +35,6 @@ export const updateLocalStorage = (id, tareaActualizada, prioridadActualizada, b
                 tarea: tareaActualizada,
                 prioridad: prioridadActualizada,
                 bloqueado: bloqueado === "true"
-
             };
         }
         return tarea;
@@ -104,6 +102,9 @@ export const loadCards = () => {
                 cancelButtonText: 'Cancelar',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
+                customClass: {
+                    popup: 'custom-swal' // Aplica la clase personalizada
+                }
             }).then((result) => {
                 if (result.isConfirmed) {
                     card.remove();
@@ -172,6 +173,9 @@ export const loadCards = () => {
                 `,
                 confirmButtonText: 'Guardar',
                 focusConfirm: false,
+                customClass: {
+                    popup: 'custom-swal' // Aplica la clase personalizada
+                },
                 preConfirm: () => {
                     const tareaEditada = Swal.getPopup().querySelector('#tareaEditada').value;
                     const prioridadEditada = Swal.getPopup().querySelector('#prioridadEditada').value;
@@ -184,17 +188,17 @@ export const loadCards = () => {
                     card.querySelector('h3').textContent = `Prioridad de la tarjeta: ${prioridadEditada}`;
                     card.querySelector('p').textContent = `Contenido: ${tareaEditada}`;
 
-                    let text, color;
-                    if (prioridadEditada < 2) {
-                        text = "Baja Importancia.";
-                        color = "blue";
-                    } else if (prioridadEditada == 2) {
-                        text = "Media Importancia.";
-                        color = "yellowgreen";
-                    } else {
-                        text = "Alta Importancia.";
-                        color = "red";
-                    }
+                    // let text, color;
+                    // if (prioridad === 1) {
+                    //     text = "Baja Importancia.";
+                    //     color = "blue";
+                    // } else if (prioridad === 2) {
+                    //     text = "Media Importancia.";
+                    //     color = "yellowgreen";
+                    // } else if (prioridad === 3) {
+                    //     text = "Alta Importancia.";
+                    //     color = "red";
+                    // }
 
                     card.querySelectorAll('p')[1].textContent = text;
                     card.querySelectorAll('p')[1].style.color = color;
@@ -223,17 +227,16 @@ export const loadCards = () => {
 
 
         let text, color;
-        if (prioridad < 2) {
+        if (prioridad === 1) {
             text = "Baja Importancia.";
             color = "blue";
         } else if (prioridad === 2) {
             text = "Media Importancia.";
             color = "yellowgreen";
-        } else {
+        } else if (prioridad === 3) {
             text = "Alta Importancia.";
             color = "red";
         }
-
 
         card.innerHTML = `
             <h3>Prioridad de la tarjeta: ${prioridad}</h3>
