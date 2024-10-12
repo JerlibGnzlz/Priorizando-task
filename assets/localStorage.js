@@ -206,15 +206,7 @@ export const loadCards = () => {
                     // Actualizar en localStorage
                     updateLocalStorage(id, tareaEditada, Number(prioridadEditada), card.dataset.disabled === "true");
 
-                    willOpen: () => {
-                        // Actualizar el contador de caracteres al escribir
-                        const input = Swal.getPopup().querySelector('#tareaEditada');
-                        const charCount = Swal.getPopup().querySelector('#charCount');
-                        input.addEventListener('input', () => {
-                            const remaining = 100 - input.value.length;
-                            charCount.textContent = `${remaining} caracteres restantes`;
-                        });
-                    }
+
                 }
             });
 

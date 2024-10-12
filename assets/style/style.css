@@ -110,28 +110,8 @@ button {
 
 .contenido-tarjeta {
     margin-bottom: 10px;
-    /* Separar contenido de los botones */
 }
 
-.custom-swal {
-    max-width: 100vw;
-    /* Ajusta el ancho máximo del popup */
-    /* margin: auto; */
-    /* Centra el popup */
-}
-
-.popup-content {
-    display: flex;
-    /* flex-direction: row; */
-    /* align-items: center; */
-}
-
-.swal2-input {
-    width: 100vw;
-    /* Hace que los inputs ocupen el 100% del contenedor */
-    /* box-sizing: border-box; */
-    /* Incluye el padding y el borde en el ancho total */
-}
 
 @media (max-width: 600px) {
     .titulo {
