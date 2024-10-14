@@ -1,6 +1,6 @@
 {
     "name": "CodeLab-Task",
-    "short_name": "CodeLab",
+    "short_name": "CodeJ-task",
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#ffffff",
