@@ -2,6 +2,7 @@
 import { saveToLocalStorage, removeFromLocalStorage, updateLocalStorage } from './localStorage.js';
 import generateSecureId from './IdTask.js';
 
+
 export const getPrioridad = () => {
     const tarea = document.querySelector(".task");
     const selectPrioridad = document.querySelector("#priority");

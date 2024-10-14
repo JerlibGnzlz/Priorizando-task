@@ -9,6 +9,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./assets/style/style.css" />
+    <link rel="manifest" href="./manifest.json">
     <title>CodeLab-Task</title>
 </head>
 
@@ -37,6 +38,20 @@
     <script type="module">
         import { getPrioridad } from './assets/task.js';
         document.getElementById("addTaskButton").addEventListener("click", getPrioridad);
+
+
+        // Registrar el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado con éxito:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Registro del Service Worker falló:', error);
+                    });
+            });
+        }
 
     </script>
 </body>
