@@ -2,12 +2,12 @@
 
 const CACHE_NAME = 'codelab-task-cache-v1';
 const urlsToCache = [
-    '../',
-    '../index.html',
-    '../assets/style/style.css',
-    '../assets/task.js', // Ajusta según tu estructura
-    '../assets/icons/icon-192x192.png',
-    '../assets/icons/icon-512x512.png',
+    './',
+    './index.html',
+    './assets/style/style.css',
+    './assets/task.js', // Ajusta según tu estructura
+    './assets/icons/icon-192x192.png',
+    './assets/icons/icon-512x512.png',
     'https://kit.fontawesome.com/bfda0355a9.js',
     'https://cdn.jsdelivr.net/npm/sweetalert2@11',
     'https://cdn.jsdelivr.net/npm/toastify-js',
