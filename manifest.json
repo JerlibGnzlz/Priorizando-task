@@ -1,6 +1,6 @@
 {
-    "name": "CodeJ-Task",
-    "short_name": "CodeJ-task",
+    "name": "CodeQy-Task",
+    "short_name": "CodeQy-task",
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#1D2238",
