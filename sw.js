@@ -1,6 +1,6 @@
 // sw.js
 
-const CACHE_NAME = 'CodeJ-task-cache-v1';
+const CACHE_NAME = 'CodeQy-task-cache-v1';
 const urlsToCache = [
     './',
     './index.html',
